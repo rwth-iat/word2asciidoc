@@ -185,7 +185,7 @@ def fix_references(content):
             # Formatting the right so that html and pdf documents generated
             # from this file will function properly
             repl = re.sub(r'\-', '_', repl)
-            repl = re.sub(r'link:#(_)?', '#\\_', repl)
+            repl = re.sub(r'link:#(_)?', '#_', repl)
             # If the informative line describes a reference for an image,
             # figure, table or annex
             if misc_refs.match(val):
@@ -194,7 +194,7 @@ def fix_references(content):
                 val = val.strip(".")
                 # Intuitively, the replacement value has form of an ascii-doc
                 # reference
-                repl = f"<<{repl},{val}>>"
+                repl = f"_<<{repl},{val}>>_"
                 # Matching the value directly might result in problems
                 # like matching Figure 45 for the 'Figure 4' part and having
                 # a replacement such as the following
